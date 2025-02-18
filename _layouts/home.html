@@ -45,21 +45,18 @@ layout: default
                             height: 200
                           };
                           const image = await loadImage(src);
-                          const crops = await smartcrop.crop(image, options);
-                          console.log('crops', crops);
-                          showCroppedImage(src, crops.topCrop, idc, options)
-                        }
-                        function showCroppedImage(src, crop, idc, options) {
-                          const div = document.createElement('div');
-                          const style = div.style;
-                          style.backgroundImage = `url('${src}')`;
-                          const scale = options.width / crop.width;
-                          // style.backgroundPositionX = crop.x * scale + 'px';
-                          // style.backgroundPositionY = -crop.y * scale + 'px';
-                          style.backgroundSize = 'cover';
-                          style.width = options.width + 'px';
-                          style.height = options.height + 'px';
-                          document.getElementById(idc).appendChild(div);
+                          const result = await smartcrop.crop(image, options);
+                          const crop = result.topCrop;
+                          console.log('crops', crop);
+                          const canvas = document.createElement('canvas');
+                          canvas.width = options.width;
+                          canvas.height = options.height;
+                          const ctx = canvas.getContext('2d');
+                          ctx.drawImage(image, crop.x, crop.y, crop.width, crop.height, 0, 0, canvas.width, canvas.height);
+                      
+                          // Append the cropped image to the DOM
+                          // document.body.appendChild(canvas);
+                          document.getElementById(idc).appendChild(canvas);
                         }
                         main();
                       </script>
