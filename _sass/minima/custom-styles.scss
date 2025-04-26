@@ -8,3 +8,82 @@
 //       @include relative-font-size(1.125);
 //     }
 //   }
+
+/**
+* Site header
+*/
+
+/**
+* Site header
+*/
+.site-header {
+    border-bottom: 1px solid $border-color-02;
+    min-height: none;
+    line-height: unset;
+  
+    // Positioning context for the mobile navigation icon
+    width: 100%;
+    position: relative;
+    left: 50vw;
+    right: 50vw;
+    margin-left: -50vw;
+    margin-right: -50vw;
+    // background-image: url('/assets/banner.png');
+    background-color: $brand-color-light;
+    background-size: cover;
+    background-position: center;
+    // min-height: 14.1vw;
+    min-height: 25vw;
+}
+
+.banner {
+  position: relative;
+  color: darken($color: $site-title-color, $amount: 10);
+  display: block;
+  margin-top: 0;
+  margin-bottom: 5px;
+  margin-right: auto;
+  margin-left: unquote('max(calc((100% - #{$content-width}) / 2), 10vw)');
+  max-width: 1080px;
+  min-height: 5vh;
+  padding: 1rem 1.25rem;
+  text-decoration: none;
+  width: 75%;
+
+  .img-container {
+    height: 120px;
+    width: height;
+    float: left;
+
+    @include media-query($on-palm) {
+      visibility: hidden;
+      width: 0px;
+    }
+
+    img {
+      height: 100%;
+      width: auto;
+    }
+  }
+
+  h1 {
+    font-weight: bolder;
+    display: block;
+    margin-block-start: 0.67rem;
+    margin-block-end: 0.67rem;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+  }
+
+  h2 {
+    font-family: $base-font-family;
+    display: block;
+    font-size: 1.5rem;
+    font-style: oblique;
+    margin-block-start: 0.83rem;
+    margin-block-end: 0.83rem;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    font-weight: lighter;
+  }
+}
